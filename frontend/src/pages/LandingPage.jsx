@@ -75,12 +75,12 @@ const LandingPage = () => {
           <div className="max-w-5xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-indigo-300 text-sm font-medium mb-8 backdrop-blur-md">
               <span className="flex h-2 w-2 rounded-full bg-indigo-500 animate-pulse"></span>
-              Zolix CRM 2.0 is now live
+              Zolix CRM is now live
             </div>
             <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.1] mb-8">
-              Manage leads. <br className="hidden md:block" />
+              Simplify Operations. <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
-                Close deals faster.
+                Automate Growth.
               </span>
             </h1>
             <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
