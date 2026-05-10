@@ -1,0 +1,160 @@
+import { Link } from "react-router-dom";
+import { ArrowRight, Zap, Users, Brain, Shield, BarChart3 } from "lucide-react";
+
+const features = [
+  {
+    icon: <Users className="text-white" size={24} />,
+    color: "from-blue-500 to-indigo-600",
+    title: "Smart Lead Management",
+    desc: "Capture, organize, and track every lead. Our intuitive interface ensures no opportunity ever falls through the cracks."
+  },
+  {
+    icon: <Brain className="text-white" size={24} />,
+    color: "from-purple-500 to-pink-600",
+    title: "AI-Powered Insights",
+    desc: "Leverage artificial intelligence to analyze lead sentiment, score opportunities, and suggest the exact next steps."
+  },
+  {
+    icon: <Zap className="text-white" size={24} />,
+    color: "from-amber-400 to-orange-500",
+    title: "Workflow Automations",
+    desc: "Put your busywork on autopilot. Automatically create tasks and send personalized emails when lead statuses change."
+  },
+  {
+    icon: <BarChart3 className="text-white" size={24} />,
+    color: "from-emerald-400 to-teal-500",
+    title: "Real-time Analytics",
+    desc: "Make data-driven decisions with real-time dashboards showing your conversion rates, pipeline value, and team performance."
+  },
+  {
+    icon: <Users className="text-white" size={24} />,
+    color: "from-rose-400 to-red-500",
+    title: "Team Collaboration",
+    desc: "Work together seamlessly. Assign leads, share notes, and use built-in chat spaces to close deals as a unified team."
+  },
+  {
+    icon: <Shield className="text-white" size={24} />,
+    color: "from-slate-600 to-slate-800",
+    title: "Enterprise Security",
+    desc: "Bank-grade security with role-based access control (RBAC), secure authentication, and encrypted data storage."
+  }
+];
+
+const LandingPage = () => {
+  return (
+    <div className="min-h-screen bg-slate-50 font-sans selection:bg-indigo-500 selection:text-white">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
+              <Zap className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-xl font-bold tracking-tight">Zolix</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <Link to="/login" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
+              Log in
+            </Link>
+            <Link to="/register" className="text-sm font-medium bg-black text-white px-5 py-2.5 rounded-full hover:bg-slate-800 transition-colors">
+              Start Free Trial
+            </Link>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="pt-40 pb-20 px-6 overflow-hidden relative">
+        {/* Abstract Background */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-tr from-indigo-500/20 via-purple-500/20 to-emerald-500/20 blur-3xl rounded-full opacity-50 -z-10 animate-pulse"></div>
+
+        <div className="max-w-5xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-sm font-semibold mb-8">
+            <span className="flex h-2 w-2 rounded-full bg-indigo-600"></span>
+            Zolix CRM 2.0 is now live
+          </div>
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 leading-[1.1] mb-8">
+            Manage leads. <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">
+              Close deals faster.
+            </span>
+          </h1>
+          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+            The intelligent CRM built for modern teams. Automate your workflows, collaborate seamlessly, and let AI uncover your best opportunities.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link to="/register" className="w-full sm:w-auto flex items-center justify-center gap-2 bg-black text-white px-8 py-4 rounded-full text-lg font-medium hover:scale-105 hover:bg-slate-900 transition-all shadow-xl shadow-black/10">
+              Get Started Now <ArrowRight size={20} />
+            </Link>
+            <Link to="/login" className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white text-slate-900 border border-slate-200 px-8 py-4 rounded-full text-lg font-medium hover:bg-slate-50 transition-all">
+              Sign in to Workspace
+            </Link>
+          </div>
+        </div>
+
+        {/* Dashboard Preview mockup */}
+        <div className="max-w-6xl mx-auto mt-20 relative">
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-50 via-transparent to-transparent z-10"></div>
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-2xl overflow-hidden transform perspective-1000 rotate-x-2 scale-95 hover:scale-100 transition-transform duration-700 ease-out">
+            <div className="h-10 border-b border-slate-100 flex items-center px-4 gap-2 bg-slate-50">
+              <div className="w-3 h-3 rounded-full bg-red-400"></div>
+              <div className="w-3 h-3 rounded-full bg-amber-400"></div>
+              <div className="w-3 h-3 rounded-full bg-emerald-400"></div>
+            </div>
+            {/* Mockup content */}
+            <div className="p-8 grid grid-cols-4 gap-6 opacity-80 pointer-events-none">
+               <div className="col-span-1 space-y-4">
+                 <div className="h-8 bg-slate-100 rounded-lg w-full"></div>
+                 <div className="h-8 bg-slate-100 rounded-lg w-3/4"></div>
+                 <div className="h-8 bg-slate-100 rounded-lg w-5/6"></div>
+               </div>
+               <div className="col-span-3 space-y-6">
+                 <div className="flex gap-4">
+                   <div className="h-32 bg-indigo-50 rounded-xl w-1/3 border border-indigo-100"></div>
+                   <div className="h-32 bg-emerald-50 rounded-xl w-1/3 border border-emerald-100"></div>
+                   <div className="h-32 bg-amber-50 rounded-xl w-1/3 border border-amber-100"></div>
+                 </div>
+                 <div className="h-64 bg-slate-50 rounded-xl w-full border border-slate-100"></div>
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-4xl font-bold tracking-tight text-slate-900 mb-6">Everything you need to scale</h2>
+            <p className="text-lg text-slate-600">Stop juggling spreadsheets. Zolix provides a unified workspace for your entire revenue team to operate at peak efficiency.</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-10">
+            {features.map((feature, i) => (
+              <div key={i} className="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl hover:border-indigo-100 hover:-translate-y-1 transition-all duration-300">
+                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br ${feature.color} shadow-inner`}>
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h3>
+                <p className="text-slate-600 leading-relaxed">{feature.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-slate-950 py-12 text-slate-400 text-center border-t border-slate-800">
+        <div className="flex items-center justify-center gap-2 mb-6">
+          <div className="w-6 h-6 bg-white rounded flex items-center justify-center">
+            <Zap className="w-4 h-4 text-slate-950" />
+          </div>
+          <span className="text-xl font-bold tracking-tight text-white">Zolix</span>
+        </div>
+        <p>© {new Date().getFullYear()} Zolix CRM. All rights reserved.</p>
+      </footer>
+    </div>
+  );
+};
+
+export default LandingPage;
