@@ -1,7 +1,7 @@
 # ⚡ Zolix CRM
 
 <div align="center">
-  <img src="https://zolixautomation.netlify.app/vite.svg" alt="Zolix Logo" width="80" height="80" />
+  <img src="./Zolix-Logo.png" alt="Zolix Logo" width="80" height="80" />
   <br/>
   <h3>Simplify Operations. Automate Growth.</h3>
   <p>A highly advanced, production-ready SaaS Customer Relationship Management platform built for modern teams.</p>
