@@ -8,7 +8,6 @@ import {
   createUser,
   deleteUser,
   getUsers,
-  getUsers,
   updateUser,
   getInvite,
   acceptInvite,
