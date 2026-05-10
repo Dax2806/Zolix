@@ -6,9 +6,13 @@ import {
   getBilling,
   getPlans,
   updatePlan,
+  createCheckoutSession
 } from "./billing.controller.js";
 
 const router = express.Router();
+
+// Webhook is mounted in app.js because it requires raw body parser
+// /api/billing/webhook
 
 router.use(authMiddleware);
 router.use(tenantMiddleware);
@@ -16,6 +20,13 @@ router.use(tenantMiddleware);
 router.get("/plans", getPlans);
 router.get("/", getBilling);
 
+router.post(
+  "/checkout",
+  authorize("owner", "admin"),
+  createCheckoutSession
+);
+
+// We keep updatePlan as a manual fallback or for free tier
 router.patch(
   "/plan",
   authorize("owner", "admin"),

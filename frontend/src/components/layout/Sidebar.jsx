@@ -4,8 +4,10 @@ import {
 
 import { navigationItems }
   from "../../utils/navigation";
+import useAuth from "../../hooks/useAuth";
 
 const Sidebar = () => {
+  const { user } = useAuth();
   return (
     <aside
       className="
@@ -56,7 +58,7 @@ const Sidebar = () => {
         gap-2
       "
       >
-        {navigationItems.map(
+        {navigationItems.filter((item) => !item.allowedRoles || item.allowedRoles.includes(user?.role)).map(
           (item) => {
             const Icon = item.icon;
 

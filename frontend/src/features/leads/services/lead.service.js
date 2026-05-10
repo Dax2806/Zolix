@@ -24,6 +24,17 @@ export const createLead =
     return unwrap(response);
   };
 
+export const bulkCreateLeads =
+  async (leads) => {
+    const response =
+      await api.post(
+        "/leads/bulk",
+        { leads }
+      );
+
+    return unwrap(response);
+  };
+
 export const updateLeadStatus =
   async (
     leadId,

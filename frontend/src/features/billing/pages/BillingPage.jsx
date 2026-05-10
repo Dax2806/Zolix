@@ -2,6 +2,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import {
   CheckCircle2,
@@ -13,7 +14,7 @@ import DashboardLayout from "../../../layouts/DashboardLayout";
 import PageHeader from "../../../components/layout/PageHeader";
 import {
   getBilling,
-  updatePlan,
+  createCheckoutSession,
 } from "../services/billing.service";
 
 const formatLimit = (limit) =>
@@ -42,6 +43,18 @@ const BillingPage = () => {
     useState(null);
   const [loading, setLoading] =
     useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get("success")) {
+      toast.success("Subscription updated successfully!");
+      setSearchParams({});
+    }
+    if (searchParams.get("canceled")) {
+      toast.error("Checkout was canceled.");
+      setSearchParams({});
+    }
+  }, [searchParams, setSearchParams]);
 
   const fetchBilling = async () => {
     try {
@@ -62,23 +75,20 @@ const BillingPage = () => {
     fetchBilling();
   }, []);
 
-  const handlePlanChange =
-    async (plan) => {
-      try {
-        const data =
-          await updatePlan(plan);
-        setBilling(data);
-        toast.success(
-          "Plan updated"
-        );
-      } catch (error) {
-        toast.error(
-          error.response?.data
-            ?.message ||
-            "Failed to update plan"
-        );
+  const handlePlanChange = async (plan) => {
+    try {
+      setLoading(true);
+      const data = await createCheckoutSession(plan);
+      if (data.url) {
+        window.location.href = data.url;
       }
-    };
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message || "Failed to initiate checkout"
+      );
+      setLoading(false);
+    }
+  };
 
   return (
     <DashboardLayout>

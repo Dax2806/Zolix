@@ -38,11 +38,11 @@ const TeamPage = () => {
     useState(true);
   const [formData, setFormData] =
     useState({
-      name: "",
       email: "",
-      password: "",
       role: "staff",
     });
+
+  const [inviteLink, setInviteLink] = useState("");
 
   const currentUserId =
     currentUser?._id || currentUser?.id;
@@ -89,11 +89,13 @@ const TeamPage = () => {
       ]);
 
       setFormData({
-        name: "",
         email: "",
-        password: "",
         role: "staff",
       });
+
+      if (createdUser.inviteToken) {
+        setInviteLink(`${window.location.origin}/invite/${createdUser.inviteToken}`);
+      }
 
       toast.success(
         "Team member added"
@@ -213,46 +215,11 @@ const TeamPage = () => {
             className="mt-5 space-y-4"
           >
             <input
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Full name"
-              className="
-              w-full
-              border
-              border-slate-200
-              rounded-xl
-              px-4
-              py-3
-            "
-              required
-            />
-
-            <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
               placeholder="Email"
-              className="
-              w-full
-              border
-              border-slate-200
-              rounded-xl
-              px-4
-              py-3
-            "
-              required
-            />
-
-            <input
-              type="password"
-              name="password"
-              value={
-                formData.password
-              }
-              onChange={handleChange}
-              placeholder="Temporary password"
               className="
               w-full
               border
@@ -305,9 +272,23 @@ const TeamPage = () => {
             "
             >
               <UserPlus size={18} />
-              Add Member
+              Invite Member
             </button>
           </form>
+
+          {inviteLink && (
+            <div className="mt-6 p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
+              <p className="text-sm text-emerald-800 font-medium mb-2">Invitation created successfully!</p>
+              <p className="text-xs text-emerald-600 mb-2">An email invitation has been automatically sent to the new member.</p>
+              <p className="text-xs text-emerald-600 mt-3 mb-2">If they don't receive it, you can share this link directly:</p>
+              <input 
+                readOnly 
+                value={inviteLink} 
+                className="w-full text-xs p-2 rounded border border-emerald-200 bg-white" 
+                onClick={(e) => e.target.select()}
+              />
+            </div>
+          )}
         </section>
 
         <section

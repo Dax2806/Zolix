@@ -8,7 +8,10 @@ import {
   createUser,
   deleteUser,
   getUsers,
+  getUsers,
   updateUser,
+  getInvite,
+  acceptInvite,
 } from "./user.controller.js";
 import {
   createUserSchema,
@@ -16,6 +19,9 @@ import {
 } from "./user.validation.js";
 
 const router = express.Router();
+
+router.get("/invite/:token", getInvite);
+router.post("/invite/:token", acceptInvite);
 
 router.use(authMiddleware);
 router.use(tenantMiddleware);

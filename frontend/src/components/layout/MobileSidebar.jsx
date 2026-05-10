@@ -6,13 +6,14 @@ import {
   NavLink,
 } from "react-router-dom";
 
-import { navigationItems }
-  from "../../utils/navigation";
+import { navigationItems } from "../../utils/navigation";
+import useAuth from "../../hooks/useAuth";
 
 const MobileSidebar = ({
   open,
   setOpen,
 }) => {
+  const { user } = useAuth();
   return (
     <>
       {/* Overlay */}
@@ -105,7 +106,7 @@ const MobileSidebar = ({
           gap-2
         "
         >
-          {navigationItems.map(
+          {navigationItems.filter((item) => !item.allowedRoles || item.allowedRoles.includes(user?.role)).map(
             (item) => {
               const Icon =
                 item.icon;

@@ -6,6 +6,10 @@ import {
   getPlansService,
   updatePlanService,
 } from "./billing.service.js";
+import {
+  createStripeCheckoutSession,
+  handleStripeWebhook,
+} from "./stripe.service.js";
 
 export const getPlans = (
   req,
@@ -54,3 +58,28 @@ export const updatePlan =
       next(error);
     }
   };
+
+export const createCheckoutSession = async (req, res, next) => {
+  try {
+    const { plan } = req.body;
+    const session = await createStripeCheckoutSession(plan, req.user);
+    
+    return successResponse(res, {
+      message: "Checkout session created",
+      data: session,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const stripeWebhook = async (req, res, next) => {
+  try {
+    const signature = req.headers['stripe-signature'];
+    const result = await handleStripeWebhook(req.body, signature);
+    res.json(result);
+  } catch (error) {
+    console.error("Stripe Webhook Error:", error);
+    res.status(400).send(`Webhook Error: ${error.message}`);
+  }
+};

@@ -13,6 +13,7 @@ import {
   toggleTask,
   updateLead,
   updateLeadStatus,
+  bulkCreateLeads,
 } from "./lead.controller.js";
 
 const router = express.Router();
@@ -24,6 +25,11 @@ router.post(
   "/",
   planLimit("leads"),
   createLead
+);
+router.post(
+  "/bulk",
+  planLimit("leads"),
+  bulkCreateLeads
 );
 router.get("/", getLeads);
 router.get("/:id", getLeadById);

@@ -36,14 +36,13 @@ const automationSchema =
 
       action: {
         type: String,
-        enum: ["create_task"],
+        enum: ["create_task", "send_email"],
         required: true,
       },
 
       actionConfig: {
         title: {
           type: String,
-          required: true,
         },
         priority: {
           type: String,
@@ -57,6 +56,12 @@ const automationSchema =
         dueInDays: {
           type: Number,
           default: 1,
+        },
+        emailSubject: {
+          type: String,
+        },
+        emailBody: {
+          type: String,
         },
       },
 

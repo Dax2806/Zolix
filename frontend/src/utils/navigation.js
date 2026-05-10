@@ -27,15 +27,18 @@ export const navigationItems = [
     title: "Team",
     path: "/team",
     icon: Settings,
+    allowedRoles: ["owner", "admin"],
   },
   {
     title: "Billing",
     path: "/billing",
     icon: CreditCard,
+    allowedRoles: ["owner", "admin"],
   },
   {
     title: "Automations",
     path: "/automations",
     icon: Workflow,
+    allowedRoles: ["owner", "admin", "manager"],
   },
 ];

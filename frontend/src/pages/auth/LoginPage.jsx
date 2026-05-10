@@ -52,7 +52,7 @@ const LoginPage = () => {
             formData
           );
 
-        login(data.data);
+        login(data);
 
         toast.success(
           "Login successful"

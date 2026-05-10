@@ -1,9 +1,11 @@
 import bcrypt from "bcryptjs";
+import crypto from "crypto";
 import AppError from "../../common/errors/AppError.js";
 import User from "./user.model.js";
+import { sendInviteEmail } from "../../common/services/email.service.js";
 
 const publicFields =
-  "_id name email role isActive createdAt";
+  "_id name email role isActive status createdAt";
 
 export const getUsersService =
   async (user) => {
@@ -28,24 +30,28 @@ export const createUserService =
       );
     }
 
-    const hashedPassword =
-      await bcrypt.hash(
-        data.password,
-        10
-      );
+    const inviteToken = crypto.randomBytes(32).toString("hex");
 
     const createdUser =
       await User.create({
         tenantId: user.tenantId,
-        name: data.name,
         email: data.email,
-        password: hashedPassword,
         role: data.role,
+        status: "invited",
+        inviteToken,
       });
 
-    return User.findById(
+    // Send the invite email
+    await sendInviteEmail(data.email, inviteToken);
+
+    const userObj = await User.findById(
       createdUser._id
-    ).select(publicFields);
+    ).select(publicFields).lean();
+
+    return {
+      ...userObj,
+      inviteToken, // Return the token so the admin can copy it
+    };
   };
 
 export const updateUserService =
@@ -120,3 +126,33 @@ export const deleteUserService =
       deletedUserId: id,
     };
   };
+
+export const getInviteService = async (token) => {
+  const user = await User.findOne({ inviteToken: token, status: "invited" });
+  if (!user) {
+    throw new AppError("Invalid or expired invitation token", 400);
+  }
+  return { email: user.email };
+};
+
+export const acceptInviteService = async (token, name, password) => {
+  const user = await User.findOne({ inviteToken: token, status: "invited" });
+  if (!user) {
+    throw new AppError("Invalid or expired invitation token", 400);
+  }
+
+  if (!name || !password || password.length < 6) {
+    throw new AppError("Name and a valid password (min 6 chars) are required", 400);
+  }
+
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  user.name = name;
+  user.password = hashedPassword;
+  user.status = "active";
+  user.inviteToken = undefined;
+
+  await user.save();
+
+  return { message: "Invitation accepted successfully" };
+};

@@ -15,36 +15,32 @@ import userRoutes from "./modules/users/user.routes.js";
 import aiRoutes from "./modules/ai/ai.routes.js";
 import billingRoutes from "./modules/billing/billing.routes.js";
 import automationRoutes from "./modules/automations/automation.routes.js";
+import { stripeWebhook } from "./modules/billing/billing.controller.js";
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: process.env.FRONTEND_URL || "*",
+  credentials: true
+}));
 app.use(helmet());
 app.use(morgan("dev"));
+
+// Stripe webhook must use raw body parser, so it goes before express.json()
+app.use("/api/billing/webhook", express.raw({ type: 'application/json' }), stripeWebhook);
+
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/leads", leadRoutes);
 app.use("/api/tasks", taskRoutes);
-app.use(
-  "/api/dashboard",
-  dashboardRoutes
-);
-app.use(
-  "/api/activities",
-  activityRoutes
-);
-app.use(
-  "/api/notifications",
-  notificationRoutes
-);
+app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/activities", activityRoutes);
+app.use("/api/notifications", notificationRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/ai", aiRoutes);
 app.use("/api/billing", billingRoutes);
-app.use(
-  "/api/automations",
-  automationRoutes
-);
+app.use("/api/automations", automationRoutes);
 app.use("/api/analytics", analyticsRoutes);
 
 app.get("/", (req, res) => {

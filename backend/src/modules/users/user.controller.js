@@ -6,6 +6,8 @@ import {
   deleteUserService,
   getUsersService,
   updateUserService,
+  getInviteService,
+  acceptInviteService,
 } from "./user.service.js";
 
 export const getUsers = async (
@@ -89,6 +91,31 @@ export const deleteUser = async (
       message:
         "User deleted successfully",
       data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getInvite = async (req, res, next) => {
+  try {
+    const data = await getInviteService(req.params.token);
+    return successResponse(res, {
+      message: "Invite retrieved successfully",
+      data,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const acceptInvite = async (req, res, next) => {
+  try {
+    const { name, password } = req.body;
+    const data = await acceptInviteService(req.params.token, name, password);
+    return successResponse(res, {
+      message: "Invite accepted successfully",
+      data,
     });
   } catch (error) {
     next(error);

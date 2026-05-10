@@ -3,6 +3,7 @@ import {
   createActivity,
 } from "../activity/activity.service.js";
 import Automation from "./automation.model.js";
+import { sendEmail } from "../../common/services/email.service.js";
 
 export const getAutomationsService =
   async (user) => {
@@ -144,6 +145,31 @@ export const runLeadStatusAutomations =
               automation._id,
           },
         });
+      } else if (automation.action === "send_email") {
+        if (lead.email) {
+          const body = automation.actionConfig.emailBody.replace("{{leadName}}", lead.name || "there");
+          const subject = automation.actionConfig.emailSubject.replace("{{leadName}}", lead.name || "there");
+
+          await sendEmail({
+            to: lead.email,
+            subject,
+            text: body,
+            html: `<p>${body.replace(/\n/g, '<br/>')}</p>`,
+          });
+
+          await createActivity({
+            tenantId,
+            entityType: "lead",
+            entityId: lead._id,
+            action: "automation_email_sent",
+            description: `Automation "${automation.name}" sent email "${subject}"`,
+            performedBy: user.id,
+            metadata: {
+              automationId: automation._id,
+              subject,
+            },
+          });
+        }
       }
     }
 

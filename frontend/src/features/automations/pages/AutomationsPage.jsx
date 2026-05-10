@@ -41,9 +41,12 @@ const AutomationsPage = () => {
       name: "",
       fromStatus: "",
       toStatus: "qualified",
+      actionType: "create_task",
       title: "",
       priority: "medium",
       dueInDays: 1,
+      emailSubject: "",
+      emailBody: "Hi {{leadName}},\n\n",
     });
 
   const fetchAutomations =
@@ -82,6 +85,17 @@ const AutomationsPage = () => {
     event.preventDefault();
 
     try {
+      const actionConfig = formData.actionType === "create_task" 
+        ? {
+            title: formData.title,
+            priority: formData.priority,
+            dueInDays: Number(formData.dueInDays),
+          }
+        : {
+            emailSubject: formData.emailSubject,
+            emailBody: formData.emailBody,
+          };
+
       const automation =
         await createAutomation({
           name: formData.name,
@@ -93,15 +107,8 @@ const AutomationsPage = () => {
             toStatus:
               formData.toStatus,
           },
-          action: "create_task",
-          actionConfig: {
-            title: formData.title,
-            priority:
-              formData.priority,
-            dueInDays: Number(
-              formData.dueInDays
-            ),
-          },
+          action: formData.actionType,
+          actionConfig,
           isActive: true,
         });
 
@@ -113,9 +120,12 @@ const AutomationsPage = () => {
         name: "",
         fromStatus: "",
         toStatus: "qualified",
+        actionType: "create_task",
         title: "",
         priority: "medium",
         dueInDays: 1,
+        emailSubject: "",
+        emailBody: "Hi {{leadName}},\n\n",
       });
       toast.success(
         "Automation created"
@@ -261,46 +271,68 @@ const AutomationsPage = () => {
               </select>
             </div>
 
-            <input
-              name="title"
-              value={formData.title}
+            <select
+              name="actionType"
+              value={formData.actionType}
               onChange={handleChange}
-              placeholder="Task to create"
               className="w-full border border-slate-200 rounded-xl px-4 py-3"
-              required
-            />
+            >
+              <option value="create_task">Create Task</option>
+              <option value="send_email">Send Email</option>
+            </select>
 
-            <div className="grid grid-cols-2 gap-3">
-              <select
-                name="priority"
-                value={
-                  formData.priority
-                }
-                onChange={handleChange}
-                className="border border-slate-200 rounded-xl px-4 py-3"
-              >
-                <option value="low">
-                  Low
-                </option>
-                <option value="medium">
-                  Medium
-                </option>
-                <option value="high">
-                  High
-                </option>
-              </select>
-
-              <input
-                type="number"
-                min="0"
-                name="dueInDays"
-                value={
-                  formData.dueInDays
-                }
-                onChange={handleChange}
-                className="border border-slate-200 rounded-xl px-4 py-3"
-              />
-            </div>
+            {formData.actionType === "create_task" ? (
+              <>
+                <input
+                  name="title"
+                  value={formData.title}
+                  onChange={handleChange}
+                  placeholder="Task to create"
+                  className="w-full border border-slate-200 rounded-xl px-4 py-3"
+                  required
+                />
+                <div className="grid grid-cols-2 gap-3">
+                  <select
+                    name="priority"
+                    value={formData.priority}
+                    onChange={handleChange}
+                    className="border border-slate-200 rounded-xl px-4 py-3"
+                  >
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                  </select>
+                  <input
+                    type="number"
+                    min="0"
+                    name="dueInDays"
+                    value={formData.dueInDays}
+                    onChange={handleChange}
+                    className="border border-slate-200 rounded-xl px-4 py-3"
+                  />
+                </div>
+              </>
+            ) : (
+              <>
+                <input
+                  name="emailSubject"
+                  value={formData.emailSubject}
+                  onChange={handleChange}
+                  placeholder="Email Subject"
+                  className="w-full border border-slate-200 rounded-xl px-4 py-3"
+                  required
+                />
+                <textarea
+                  name="emailBody"
+                  value={formData.emailBody}
+                  onChange={handleChange}
+                  placeholder="Email Body (use {{leadName}} for their name)"
+                  rows={4}
+                  className="w-full border border-slate-200 rounded-xl px-4 py-3 resize-none"
+                  required
+                />
+              </>
+            )}
 
             <button
               type="submit"
@@ -358,24 +390,11 @@ const AutomationsPage = () => {
                       </div>
                       <p className="mt-2 text-sm text-slate-600">
                         When status changes{" "}
-                        {automation
-                          .conditions
-                          ?.fromStatus
-                          ? `from ${automation.conditions.fromStatus} `
-                          : ""}
-                        to{" "}
-                        {
-                          automation
-                            .conditions
-                            ?.toStatus
-                        }
-                        , create task "
-                        {
-                          automation
-                            .actionConfig
-                            .title
-                        }
-                        ".
+                        {automation.conditions?.fromStatus ? `from ${automation.conditions.fromStatus} ` : ""}
+                        to {automation.conditions?.toStatus}, 
+                        {automation.action === "create_task" 
+                          ? ` create task "${automation.actionConfig.title}".` 
+                          : ` send email "${automation.actionConfig.emailSubject}".`}
                       </p>
                     </div>
 

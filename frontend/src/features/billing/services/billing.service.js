@@ -21,3 +21,8 @@ export const updatePlan =
 
     return unwrap(response);
   };
+
+export const createCheckoutSession = async (plan) => {
+  const response = await api.post("/billing/checkout", { plan });
+  return unwrap(response);
+};

@@ -5,6 +5,7 @@ import {
   getLeadByIdService,
   getLeadsService,
   updateLeadService,
+  bulkCreateLeadsService,
 } from "./lead.service.js";
 import {
   createActivity,
@@ -33,6 +34,29 @@ export const createLead = async (
       message:
         "Lead created successfully",
       data: lead,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const bulkCreateLeads = async (
+  req,
+  res,
+  next
+) => {
+  try {
+    const leads =
+      await bulkCreateLeadsService(
+        req.body.leads,
+        req.user
+      );
+
+    return successResponse(res, {
+      statusCode: 201,
+      message:
+        "Leads imported successfully",
+      data: leads,
     });
   } catch (error) {
     next(error);

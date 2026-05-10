@@ -10,7 +10,6 @@ const userSchema = new mongoose.Schema(
 
     name: {
       type: String,
-      required: true,
       trim: true,
     },
 
@@ -23,26 +22,27 @@ const userSchema = new mongoose.Schema(
 
     password: {
       type: String,
-      required: true,
-      minlength: 6,
     },
 
     role: {
-       type: String,
-
-  enum: [
-    "owner",
-    "admin",
-    "manager",
-    "staff",
-  ],
-
-  default: "owner",
+      type: String,
+      enum: ["owner", "admin", "manager", "staff"],
+      default: "owner",
     },
 
     isActive: {
       type: Boolean,
       default: true,
+    },
+
+    status: {
+      type: String,
+      enum: ["invited", "active"],
+      default: "active",
+    },
+
+    inviteToken: {
+      type: String,
     },
   },
   {

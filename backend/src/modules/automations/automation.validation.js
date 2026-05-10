@@ -20,24 +20,32 @@ export const createAutomationSchema =
     }).default({}),
 
     action: Joi.string()
-      .valid("create_task")
+      .valid("create_task", "send_email")
       .required(),
 
     actionConfig: Joi.object({
-      title: Joi.string()
-        .min(2)
-        .required(),
+      title: Joi.when(Joi.ref('...action'), {
+        is: 'create_task',
+        then: Joi.string().min(2).required(),
+        otherwise: Joi.string().optional().allow("")
+      }),
       priority: Joi.string()
-        .valid(
-          "low",
-          "medium",
-          "high"
-        )
+        .valid("low", "medium", "high")
         .default("medium"),
       dueInDays: Joi.number()
         .min(0)
         .max(365)
         .default(1),
+      emailSubject: Joi.when(Joi.ref('...action'), {
+        is: 'send_email',
+        then: Joi.string().required(),
+        otherwise: Joi.string().optional().allow("")
+      }),
+      emailBody: Joi.when(Joi.ref('...action'), {
+        is: 'send_email',
+        then: Joi.string().required(),
+        otherwise: Joi.string().optional().allow("")
+      })
     }).required(),
 
     isActive: Joi.boolean().default(

@@ -27,7 +27,10 @@ import LeadDetailsDrawer
 
 import {
   getLeads,
+  bulkCreateLeads,
 } from "../services/lead.service";
+import Papa from "papaparse";
+import toast from "react-hot-toast";
 
 const LeadsPage = () => {
   const [leads, setLeads] =
@@ -174,6 +177,66 @@ const LeadsPage = () => {
     }
   });
 
+  const handleExportCSV = () => {
+    if (sortedLeads.length === 0) return toast.error("No leads to export");
+    const csv = Papa.unparse(sortedLeads.map(l => ({
+      Name: l.name,
+      Email: l.email,
+      Phone: l.phone,
+      Company: l.company,
+      Status: l.status,
+      Value: l.value,
+      Score: l.score,
+      CreatedAt: new Date(l.createdAt).toLocaleString()
+    })));
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+    link.setAttribute("href", url);
+    link.setAttribute("download", "leads_export.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleImportCSV = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    
+    Papa.parse(file, {
+      header: true,
+      skipEmptyLines: true,
+      complete: async (results) => {
+        try {
+          const newLeads = results.data.map(row => ({
+            name: row.Name || row.name,
+            email: row.Email || row.email,
+            phone: row.Phone || row.phone,
+            company: row.Company || row.company,
+            status: row.Status || row.status || "new",
+            value: Number(row.Value || row.value) || 0,
+            score: Number(row.Score || row.score) || 0,
+          })).filter(l => l.name);
+
+          if (newLeads.length === 0) return toast.error("No valid leads found in CSV");
+          
+          setLoading(true);
+          const importedLeads = await bulkCreateLeads(newLeads);
+          setLeads(prev => [...importedLeads, ...prev]);
+          toast.success(`Successfully imported ${importedLeads.length} leads`);
+        } catch (error) {
+          toast.error(error.response?.data?.message || "Failed to import leads");
+        } finally {
+          setLoading(false);
+          e.target.value = null;
+        }
+      },
+      error: () => {
+        toast.error("Failed to parse CSV file");
+      }
+    });
+  };
+
   return (
     <DashboardLayout>
       {/* Header */}
@@ -182,28 +245,24 @@ const LeadsPage = () => {
         title="Leads"
         description="Manage and track your customer leads"
         action={
-          <button
-            onClick={() =>
-              setOpenModal(true)
-            }
-            className="
-            flex
-            items-center
-            gap-2
-            bg-black
-            text-white
-            px-5
-            py-3
-            rounded-xl
-            font-medium
-            hover:opacity-90
-            transition-all
-          "
-          >
-            <Plus size={18} />
-
-            Add Lead
-          </button>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={handleExportCSV}
+              className="px-4 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-all flex items-center gap-2 text-sm"
+            >
+              Export CSV
+            </button>
+            <label className="cursor-pointer px-4 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-all flex items-center gap-2 text-sm">
+              Import CSV
+              <input type="file" accept=".csv" className="hidden" onChange={handleImportCSV} />
+            </label>
+            <button
+              onClick={() => setOpenModal(true)}
+              className="flex items-center gap-2 bg-black text-white px-5 py-2 rounded-xl font-medium hover:opacity-90 transition-all text-sm"
+            >
+              <Plus size={18} /> Add Lead
+            </button>
+          </div>
         }
       />
 
