@@ -8,9 +8,9 @@ const LeadsTable = ({
   return (
     <div
       className="
-      bg-white
+      bg-[#0A0A0F]
       border
-      border-slate-200
+      border-white/10
       rounded-2xl
       overflow-hidden
     "
@@ -27,9 +27,9 @@ const LeadsTable = ({
         >
           <thead
             className="
-            bg-slate-50
+            bg-[#030014]
             border-b
-            border-slate-200
+            border-white/10
           "
           >
             <tr>
@@ -99,8 +99,8 @@ const LeadsTable = ({
                 }
                 className="
                 border-b
-                border-slate-100
-                hover:bg-slate-50
+                border-white/5
+                hover:bg-[#030014]
                 transition-colors
                 cursor-pointer
               "
@@ -120,7 +120,7 @@ const LeadsTable = ({
                 <td
                   className="
                   p-4
-                  text-slate-600
+                  text-slate-400
                 "
                 >
                   {lead.email ||
@@ -130,7 +130,7 @@ const LeadsTable = ({
                 <td
                   className="
                   p-4
-                  text-slate-600
+                  text-slate-400
                 "
                 >
                   {lead.phone ||
@@ -149,7 +149,7 @@ const LeadsTable = ({
                   className="
                   p-4
                   capitalize
-                  text-slate-600
+                  text-slate-400
                 "
                 >
                   {lead.source}

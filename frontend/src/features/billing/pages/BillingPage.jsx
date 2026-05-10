@@ -98,23 +98,23 @@ const BillingPage = () => {
       />
 
       {loading ? (
-        <div className="bg-white border border-slate-200 rounded-2xl p-8 text-slate-500">
+        <div className="bg-[#0A0A0F] border border-white/10 rounded-2xl p-8 text-slate-400">
           Loading billing...
         </div>
       ) : (
         <div className="space-y-6">
           <section
             className="
-            bg-white
+            bg-[#0A0A0F]
             border
-            border-slate-200
+            border-white/10
             rounded-2xl
             p-6
           "
           >
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
-                <p className="text-sm text-slate-500">
+                <p className="text-sm text-slate-400">
                   Current Plan
                 </p>
                 <h2 className="text-2xl font-bold mt-1 capitalize">
@@ -122,7 +122,7 @@ const BillingPage = () => {
                 </h2>
               </div>
 
-              <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-sm capitalize w-fit">
+              <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-sm capitalize w-fit">
                 {billing.tenant.status}
               </span>
             </div>
@@ -152,16 +152,16 @@ const BillingPage = () => {
                 return (
                   <div
                     key={row.key}
-                    className="border border-slate-200 rounded-xl p-4"
+                    className="border border-white/10 rounded-xl p-4"
                   >
-                    <p className="text-sm text-slate-500">
+                    <p className="text-sm text-slate-400">
                       {row.label}
                     </p>
                     <p className="text-xl font-semibold mt-1">
                       {used} /{" "}
                       {formatLimit(limit)}
                     </p>
-                    <div className="mt-3 h-2 bg-slate-100 rounded-full overflow-hidden">
+                    <div className="mt-3 h-2 bg-white/10 rounded-full overflow-hidden">
                       <div
                         className="h-full bg-black"
                         style={{
@@ -192,14 +192,14 @@ const BillingPage = () => {
                 <div
                   key={plan.id}
                   className={`
-                  bg-white
+                  bg-[#0A0A0F]
                   border
                   rounded-2xl
                   p-6
                   ${
                     active
                       ? "border-black"
-                      : "border-slate-200"
+                      : "border-white/10"
                   }
                 `}
                 >
@@ -213,7 +213,7 @@ const BillingPage = () => {
                         {
                           plan.monthlyPrice
                         }
-                        <span className="text-sm font-normal text-slate-500">
+                        <span className="text-sm font-normal text-slate-400">
                           /mo
                         </span>
                       </p>
@@ -224,7 +224,7 @@ const BillingPage = () => {
                     )}
                   </div>
 
-                  <div className="mt-6 space-y-3 text-sm text-slate-600">
+                  <div className="mt-6 space-y-3 text-sm text-slate-400">
                     <p>
                       {
                         formatLimit(
@@ -270,8 +270,8 @@ const BillingPage = () => {
                     bg-black
                     text-white
                     font-medium
-                    disabled:bg-slate-100
-                    disabled:text-slate-500
+                    disabled:bg-white/10
+                    disabled:text-slate-400
                   "
                   >
                     {active

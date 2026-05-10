@@ -84,7 +84,7 @@ const LeadNotes = ({
           placeholder="Write a note..."
           className="
           border
-          border-slate-200
+          border-white/10
           rounded-2xl
           p-4
           outline-none
@@ -133,10 +133,10 @@ const LeadNotes = ({
                 key={index}
                 className="
                 border
-                border-slate-200
+                border-white/10
                 rounded-2xl
                 p-4
-                bg-slate-50
+                bg-[#030014]
               "
               >
                 <p>
@@ -146,7 +146,7 @@ const LeadNotes = ({
                 <p
                   className="
                   text-xs
-                  text-slate-500
+                  text-slate-400
                   mt-2
                 "
                 >
@@ -161,11 +161,11 @@ const LeadNotes = ({
           <div
             className="
             border
-            border-slate-200
+            border-white/10
             rounded-2xl
             p-5
-            bg-slate-50
-            text-slate-500
+            bg-[#030014]
+            text-slate-400
           "
           >
             No notes yet.

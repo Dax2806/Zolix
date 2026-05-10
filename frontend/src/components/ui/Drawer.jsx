@@ -40,10 +40,10 @@ const Drawer = ({
         h-screen
         w-full
         sm:w-125
-        bg-white
+        bg-[#0A0A0F]
         z-50
         border-l
-        border-slate-200
+        border-white/10
         shadow-2xl
         transition-transform
         duration-300
@@ -64,7 +64,7 @@ const Drawer = ({
           justify-between
           p-6
           border-b
-          border-slate-100
+          border-white/5
         "
         >
           <h2
@@ -81,7 +81,7 @@ const Drawer = ({
             className="
             p-2
             rounded-lg
-            hover:bg-slate-100
+            hover:bg-white/10
           "
           >
             <X size={18} />

@@ -11,9 +11,9 @@ const LeadsToolbar = ({
   return (
     <div
       className="
-      bg-white
+      bg-[#0A0A0F]
       border
-      border-slate-200
+      border-white/10
       rounded-2xl
       p-4
       mb-6
@@ -57,7 +57,7 @@ const LeadsToolbar = ({
           className="
           w-full
           border
-          border-slate-200
+          border-white/10
           rounded-xl
           pl-11
           pr-4
@@ -86,7 +86,7 @@ const LeadsToolbar = ({
           }
           className="
           border
-          border-slate-200
+          border-white/10
           rounded-xl
           px-4
           py-3

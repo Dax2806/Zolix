@@ -15,9 +15,9 @@ import {
 } from "../services/lead.service";
 
 const scoreStyles = {
-  hot: "bg-red-50 text-red-700",
-  warm: "bg-amber-50 text-amber-700",
-  cold: "bg-slate-100 text-slate-600",
+  hot: "bg-red-500/10 text-red-700",
+  warm: "bg-amber-500/10 text-amber-300",
+  cold: "bg-white/10 text-slate-400",
 };
 
 const LeadInsights = ({ lead }) => {
@@ -69,10 +69,10 @@ const LeadInsights = ({ lead }) => {
       className="
       mt-8
       border
-      border-slate-200
+      border-white/10
       rounded-2xl
       p-5
-      bg-white
+      bg-[#0A0A0F]
     "
     >
       <div className="flex items-center justify-between gap-3">
@@ -104,16 +104,16 @@ const LeadInsights = ({ lead }) => {
       </div>
 
       {loading ? (
-        <p className="mt-4 text-sm text-slate-500">
+        <p className="mt-4 text-sm text-slate-400">
           Generating insights...
         </p>
       ) : !insights ? (
-        <p className="mt-4 text-sm text-slate-500">
+        <p className="mt-4 text-sm text-slate-400">
           Insights unavailable.
         </p>
       ) : (
         <div className="mt-4 space-y-4">
-          <p className="text-sm text-slate-600">
+          <p className="text-sm text-slate-400">
             {insights.summary}
           </p>
 
@@ -127,13 +127,13 @@ const LeadInsights = ({ lead }) => {
                   <div
                     key={suggestion}
                     className="
-                    bg-slate-50
+                    bg-[#030014]
                     border
-                    border-slate-100
+                    border-white/5
                     rounded-xl
                     p-3
                     text-sm
-                    text-slate-700
+                    text-slate-300
                   "
                   >
                     {suggestion}
@@ -156,8 +156,8 @@ const LeadInsights = ({ lead }) => {
                 items-center
                 gap-1
                 text-sm
-                text-slate-600
-                hover:text-black
+                text-slate-400
+                hover:text-white
               "
               >
                 <Copy size={14} />
@@ -167,13 +167,13 @@ const LeadInsights = ({ lead }) => {
 
             <p
               className="
-              bg-slate-50
+              bg-[#030014]
               border
-              border-slate-100
+              border-white/5
               rounded-xl
               p-3
               text-sm
-              text-slate-700
+              text-slate-300
             "
             >
               {insights.replyDraft}

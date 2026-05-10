@@ -26,7 +26,7 @@ const StatusBadge = ({
         statusStyles[
           status
         ] ||
-          "bg-slate-100 text-slate-700"
+          "bg-white/10 text-slate-300"
       )}
     >
       {status}

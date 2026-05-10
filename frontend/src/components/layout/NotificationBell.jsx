@@ -93,7 +93,7 @@ const NotificationBell = () => {
 
       {/* DROPDOWN */}
       {open && (
-        <div className="absolute right-0 mt-2 w-80 bg-white border border-slate-200 rounded-2xl shadow-lg z-50">
+        <div className="absolute right-0 mt-2 w-80 bg-[#0A0A0F] border border-white/10 rounded-2xl shadow-lg z-50">
           {/* HEADER */}
           <div className="p-4 font-semibold border-b">
             Notifications
@@ -102,7 +102,7 @@ const NotificationBell = () => {
           {/* LIST */}
           <div className="max-h-96 overflow-auto">
             {notifications.length === 0 ? (
-              <p className="p-4 text-sm text-slate-500">
+              <p className="p-4 text-sm text-slate-400">
                 No notifications yet
               </p>
             ) : (
@@ -111,12 +111,12 @@ const NotificationBell = () => {
                   key={n._id}
                   onClick={() => handleRead(n._id)}
                   className={`p-4 border-b cursor-pointer transition ${
-                    n.isRead ? "bg-white" : "bg-slate-50"
+                    n.isRead ? "bg-[#0A0A0F]" : "bg-[#030014]"
                   }`}
                 >
                   <p className="font-medium">{n.title}</p>
 
-                  <p className="text-sm text-slate-500">
+                  <p className="text-sm text-slate-400">
                     {n.message}
                   </p>
                 </div>

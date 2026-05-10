@@ -195,9 +195,9 @@ const TeamPage = () => {
       >
         <section
           className="
-          bg-white
+          bg-[#0A0A0F]
           border
-          border-slate-200
+          border-white/10
           rounded-2xl
           p-6
           h-fit
@@ -223,7 +223,7 @@ const TeamPage = () => {
               className="
               w-full
               border
-              border-slate-200
+              border-white/10
               rounded-xl
               px-4
               py-3
@@ -238,7 +238,7 @@ const TeamPage = () => {
               className="
               w-full
               border
-              border-slate-200
+              border-white/10
               rounded-xl
               px-4
               py-3
@@ -277,14 +277,14 @@ const TeamPage = () => {
           </form>
 
           {inviteLink && (
-            <div className="mt-6 p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
+            <div className="mt-6 p-4 bg-emerald-500/10 border border-emerald-200 rounded-xl">
               <p className="text-sm text-emerald-800 font-medium mb-2">Invitation created successfully!</p>
               <p className="text-xs text-emerald-600 mb-2">An email invitation has been automatically sent to the new member.</p>
               <p className="text-xs text-emerald-600 mt-3 mb-2">If they don't receive it, you can share this link directly:</p>
               <input 
                 readOnly 
                 value={inviteLink} 
-                className="w-full text-xs p-2 rounded border border-emerald-200 bg-white" 
+                className="w-full text-xs p-2 rounded border border-emerald-200 bg-[#0A0A0F]" 
                 onClick={(e) => e.target.select()}
               />
             </div>
@@ -293,14 +293,14 @@ const TeamPage = () => {
 
         <section
           className="
-          bg-white
+          bg-[#0A0A0F]
           border
-          border-slate-200
+          border-white/10
           rounded-2xl
           overflow-hidden
         "
         >
-          <div className="p-5 border-b border-slate-200 flex items-center gap-2">
+          <div className="p-5 border-b border-white/10 flex items-center gap-2">
             <ShieldCheck size={20} />
             <h2 className="text-lg font-semibold">
               Workspace Access
@@ -308,15 +308,15 @@ const TeamPage = () => {
           </div>
 
           {loading ? (
-            <div className="p-8 text-slate-500">
+            <div className="p-8 text-slate-400">
               Loading team...
             </div>
           ) : users.length === 0 ? (
-            <div className="p-8 text-center text-slate-500">
+            <div className="p-8 text-center text-slate-400">
               No team members yet.
             </div>
           ) : (
-            <div className="divide-y divide-slate-100">
+            <div className="divide-y divide-white/5">
               {users.map((member) => {
                 const isSelf =
                   member._id ===
@@ -361,7 +361,7 @@ const TeamPage = () => {
                           <h3 className="font-semibold">
                             {member.name}
                           </h3>
-                          <p className="text-sm text-slate-500">
+                          <p className="text-sm text-slate-400">
                             {member.email}
                           </p>
                         </div>
@@ -377,8 +377,8 @@ const TeamPage = () => {
                         text-sm
                         ${
                           member.isActive
-                            ? "bg-emerald-50 text-emerald-700"
-                            : "bg-slate-100 text-slate-500"
+                            ? "bg-emerald-500/10 text-emerald-300"
+                            : "bg-white/10 text-slate-400"
                         }
                       `}
                       >
@@ -398,11 +398,11 @@ const TeamPage = () => {
                         }
                         className="
                         border
-                        border-slate-200
+                        border-white/10
                         rounded-xl
                         px-3
                         py-2
-                        disabled:bg-slate-50
+                        disabled:bg-[#030014]
                       "
                       >
                         {Object.entries(
@@ -434,7 +434,7 @@ const TeamPage = () => {
                         py-2
                         rounded-xl
                         border
-                        border-slate-200
+                        border-white/10
                         text-sm
                         disabled:opacity-50
                       "
@@ -455,7 +455,7 @@ const TeamPage = () => {
                         p-2
                         rounded-xl
                         text-red-500
-                        hover:bg-red-50
+                        hover:bg-red-500/10
                         disabled:opacity-50
                       "
                       >

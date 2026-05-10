@@ -29,9 +29,9 @@ const statusOptions = [
 ];
 
 const priorityStyles = {
-  low: "bg-emerald-50 text-emerald-700",
-  medium: "bg-amber-50 text-amber-700",
-  high: "bg-red-50 text-red-700",
+  low: "bg-emerald-500/10 text-emerald-300",
+  medium: "bg-amber-500/10 text-amber-300",
+  high: "bg-red-500/10 text-red-700",
 };
 
 const TasksPage = () => {
@@ -193,9 +193,9 @@ const TasksPage = () => {
       >
         <section
           className="
-          bg-white
+          bg-[#0A0A0F]
           border
-          border-slate-200
+          border-white/10
           rounded-2xl
           p-6
           h-fit
@@ -217,7 +217,7 @@ const TasksPage = () => {
               className="
               w-full
               border
-              border-slate-200
+              border-white/10
               rounded-xl
               px-4
               py-3
@@ -238,7 +238,7 @@ const TasksPage = () => {
               className="
               w-full
               border
-              border-slate-200
+              border-white/10
               rounded-xl
               px-4
               py-3
@@ -258,7 +258,7 @@ const TasksPage = () => {
                 onChange={handleChange}
                 className="
                 border
-                border-slate-200
+                border-white/10
                 rounded-xl
                 px-4
                 py-3
@@ -284,7 +284,7 @@ const TasksPage = () => {
                 onChange={handleChange}
                 className="
                 border
-                border-slate-200
+                border-white/10
                 rounded-xl
                 px-4
                 py-3
@@ -324,24 +324,24 @@ const TasksPage = () => {
             mb-6
           "
           >
-            <div className="bg-white border border-slate-200 rounded-xl p-4">
-              <p className="text-sm text-slate-500">
+            <div className="bg-[#0A0A0F] border border-white/10 rounded-xl p-4">
+              <p className="text-sm text-slate-400">
                 Total
               </p>
               <p className="text-2xl font-bold mt-1">
                 {taskStats.total}
               </p>
             </div>
-            <div className="bg-white border border-slate-200 rounded-xl p-4">
-              <p className="text-sm text-slate-500">
+            <div className="bg-[#0A0A0F] border border-white/10 rounded-xl p-4">
+              <p className="text-sm text-slate-400">
                 Pending
               </p>
               <p className="text-2xl font-bold mt-1">
                 {taskStats.pending}
               </p>
             </div>
-            <div className="bg-white border border-slate-200 rounded-xl p-4">
-              <p className="text-sm text-slate-500">
+            <div className="bg-[#0A0A0F] border border-white/10 rounded-xl p-4">
+              <p className="text-sm text-slate-400">
                 In Progress
               </p>
               <p className="text-2xl font-bold mt-1">
@@ -350,8 +350,8 @@ const TasksPage = () => {
                 }
               </p>
             </div>
-            <div className="bg-white border border-slate-200 rounded-xl p-4">
-              <p className="text-sm text-slate-500">
+            <div className="bg-[#0A0A0F] border border-white/10 rounded-xl p-4">
+              <p className="text-sm text-slate-400">
                 Completed
               </p>
               <p className="text-2xl font-bold mt-1">
@@ -364,9 +364,9 @@ const TasksPage = () => {
 
           <div
             className="
-            bg-white
+            bg-[#0A0A0F]
             border
-            border-slate-200
+            border-white/10
             rounded-2xl
             overflow-hidden
           "
@@ -375,7 +375,7 @@ const TasksPage = () => {
               className="
               p-5
               border-b
-              border-slate-200
+              border-white/10
               flex
               flex-col
               sm:flex-row
@@ -397,7 +397,7 @@ const TasksPage = () => {
                 }
                 className="
                 border
-                border-slate-200
+                border-white/10
                 rounded-xl
                 px-4
                 py-2
@@ -423,15 +423,15 @@ const TasksPage = () => {
             </div>
 
             {loading ? (
-              <div className="p-8 text-slate-500">
+              <div className="p-8 text-slate-400">
                 Loading tasks...
               </div>
             ) : tasks.length === 0 ? (
-              <div className="p-8 text-center text-slate-500">
+              <div className="p-8 text-center text-slate-400">
                 No tasks found.
               </div>
             ) : (
-              <div className="divide-y divide-slate-100">
+              <div className="divide-y divide-white/5">
                 {tasks.map((task) => (
                   <div
                     key={task._id}
@@ -462,7 +462,7 @@ const TasksPage = () => {
                       </div>
 
                       {task.description && (
-                        <p className="mt-2 text-sm text-slate-600">
+                        <p className="mt-2 text-sm text-slate-400">
                           {
                             task.description
                           }
@@ -485,7 +485,7 @@ const TasksPage = () => {
                           {task.priority}
                         </span>
 
-                        <span className="inline-flex items-center gap-1 bg-slate-100 px-2 py-1 rounded-lg">
+                        <span className="inline-flex items-center gap-1 bg-white/10 px-2 py-1 rounded-lg">
                           <Clock size={13} />
                           {new Date(
                             task.dueDate
@@ -493,7 +493,7 @@ const TasksPage = () => {
                         </span>
 
                         {task.leadId?.name && (
-                          <span className="bg-slate-100 px-2 py-1 rounded-lg">
+                          <span className="bg-white/10 px-2 py-1 rounded-lg">
                             {
                               task.leadId
                                 .name
@@ -514,7 +514,7 @@ const TasksPage = () => {
                         }
                         className="
                         border
-                        border-slate-200
+                        border-white/10
                         rounded-xl
                         px-3
                         py-2
@@ -546,7 +546,7 @@ const TasksPage = () => {
                         p-2
                         rounded-xl
                         text-red-500
-                        hover:bg-red-50
+                        hover:bg-red-500/10
                       "
                       >
                         <Trash2 size={18} />

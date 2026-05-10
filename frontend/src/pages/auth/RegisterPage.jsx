@@ -70,7 +70,7 @@ const RegisterPage = () => {
       flex
       items-center
       justify-center
-      bg-slate-50
+      bg-[#030014]
       px-4
     "
     >
@@ -78,12 +78,12 @@ const RegisterPage = () => {
         className="
         w-full
         max-w-md
-        bg-white
+        bg-[#0A0A0F]
         p-8
         rounded-2xl
         border
-        border-slate-200
-        shadow-sm
+        border-white/10
+        shadow-[0_0_15px_rgba(0,0,0,0.5)]
       "
       >
         <div className="mb-8">
@@ -98,7 +98,7 @@ const RegisterPage = () => {
 
           <p
             className="
-            text-slate-500
+            text-slate-400
             mt-2
           "
           >
@@ -127,7 +127,7 @@ const RegisterPage = () => {
             className="
             w-full
             border
-            border-slate-200
+            border-white/10
             rounded-xl
             px-4
             py-3
@@ -147,7 +147,7 @@ const RegisterPage = () => {
             className="
             w-full
             border
-            border-slate-200
+            border-white/10
             rounded-xl
             px-4
             py-3
@@ -167,7 +167,7 @@ const RegisterPage = () => {
             className="
             w-full
             border
-            border-slate-200
+            border-white/10
             rounded-xl
             px-4
             py-3
@@ -187,7 +187,7 @@ const RegisterPage = () => {
             className="
             w-full
             border
-            border-slate-200
+            border-white/10
             rounded-xl
             px-4
             py-3
@@ -216,7 +216,7 @@ const RegisterPage = () => {
           className="
           text-sm
           text-center
-          text-slate-500
+          text-slate-400
           mt-6
         "
         >
@@ -225,7 +225,7 @@ const RegisterPage = () => {
           <Link
             to="/login"
             className="
-            text-black
+            text-white
             font-medium
           "
           >

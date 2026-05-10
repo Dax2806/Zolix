@@ -61,7 +61,7 @@ const LeadStatusManager = ({
         className="
         w-full
         border
-        border-slate-200
+        border-white/10
         rounded-xl
         px-4
         py-3

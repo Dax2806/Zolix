@@ -28,7 +28,7 @@ const PageHeader = ({
 
         <p
           className="
-          text-slate-500
+          text-slate-400
           mt-2
         "
         >

@@ -7,7 +7,7 @@ const DashboardLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-50 relative selection:bg-indigo-500 selection:text-white">
+    <div className="min-h-screen bg-[#030014] relative selection:bg-indigo-500 selection:text-white">
       {/* Subtle advanced background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-100/40 via-transparent to-transparent -z-10 pointer-events-none"></div>
       

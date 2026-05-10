@@ -45,10 +45,10 @@ const ActivityTimeline = ({
         <div
           className="
           border
-          border-slate-200
+          border-white/10
           rounded-xl
           p-4
-          text-slate-500
+          text-slate-400
         "
         >
           Loading activity...
@@ -62,7 +62,7 @@ const ActivityTimeline = ({
           rounded-xl
           p-5
           text-center
-          text-slate-500
+          text-slate-400
         "
         >
           No activity yet.
@@ -84,7 +84,7 @@ const ActivityTimeline = ({
                   pl-9
                   pb-4
                   border-l
-                  border-slate-200
+                  border-white/10
                   last:pb-0
                 "
                 >
@@ -99,10 +99,10 @@ const ActivityTimeline = ({
                     items-center
                     justify-center
                     rounded-full
-                    bg-white
+                    bg-[#0A0A0F]
                     border
-                    border-slate-200
-                    text-slate-700
+                    border-white/10
+                    text-slate-300
                   "
                   >
                     <Icon size={16} />
@@ -120,7 +120,7 @@ const ActivityTimeline = ({
                       className="
                       mt-1
                       text-sm
-                      text-slate-600
+                      text-slate-400
                     "
                     >
                       {
@@ -134,7 +134,7 @@ const ActivityTimeline = ({
                     className="
                     mt-1
                     text-xs
-                    text-slate-500
+                    text-slate-400
                   "
                   >
                     {formatActor(

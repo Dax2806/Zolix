@@ -147,7 +147,7 @@ const LeadTasks = ({
           className="
           w-full
           border
-          border-slate-200
+          border-white/10
           rounded-xl
           px-4
           py-3
@@ -173,7 +173,7 @@ const LeadTasks = ({
             }
             className="
             border
-            border-slate-200
+            border-white/10
             rounded-xl
             px-4
             py-3
@@ -202,7 +202,7 @@ const LeadTasks = ({
             }
             className="
             border
-            border-slate-200
+            border-white/10
             rounded-xl
             px-4
             py-3
@@ -241,7 +241,7 @@ const LeadTasks = ({
                 key={task._id}
                 className="
                 border
-                border-slate-200
+                border-white/10
                 rounded-2xl
                 p-4
                 flex
@@ -296,7 +296,7 @@ const LeadTasks = ({
                   >
                     <span
                       className="
-                      bg-slate-100
+                      bg-white/10
                       px-2
                       py-1
                       rounded-lg
@@ -310,7 +310,7 @@ const LeadTasks = ({
                     {task.dueDate && (
                       <span
                         className="
-                        bg-slate-100
+                        bg-white/10
                         px-2
                         py-1
                         rounded-lg
@@ -351,7 +351,7 @@ const LeadTasks = ({
             rounded-2xl
             p-6
             text-center
-            text-slate-500
+            text-slate-400
           "
           >
             No follow-up tasks yet.

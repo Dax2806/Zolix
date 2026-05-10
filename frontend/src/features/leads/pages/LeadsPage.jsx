@@ -248,11 +248,11 @@ const LeadsPage = () => {
           <div className="flex items-center gap-3">
             <button
               onClick={handleExportCSV}
-              className="px-4 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-all flex items-center gap-2 text-sm"
+              className="px-4 py-2 bg-[#0A0A0F] border border-white/10 text-slate-300 rounded-xl font-medium hover:bg-[#030014] transition-all flex items-center gap-2 text-sm"
             >
               Export CSV
             </button>
-            <label className="cursor-pointer px-4 py-2 bg-white border border-slate-200 text-slate-700 rounded-xl font-medium hover:bg-slate-50 transition-all flex items-center gap-2 text-sm">
+            <label className="cursor-pointer px-4 py-2 bg-[#0A0A0F] border border-white/10 text-slate-300 rounded-xl font-medium hover:bg-[#030014] transition-all flex items-center gap-2 text-sm">
               Import CSV
               <input type="file" accept=".csv" className="hidden" onChange={handleImportCSV} />
             </label>
@@ -286,9 +286,9 @@ const LeadsPage = () => {
       {loading ? (
         <div
           className="
-          bg-white
+          bg-[#0A0A0F]
           border
-          border-slate-200
+          border-white/10
           rounded-2xl
           p-10
           text-center
@@ -300,9 +300,9 @@ const LeadsPage = () => {
         0 ? (
         <div
           className="
-          bg-white
+          bg-[#0A0A0F]
           border
-          border-slate-200
+          border-white/10
           rounded-2xl
           p-10
           text-center
@@ -322,7 +322,7 @@ const LeadsPage = () => {
 
           <p
             className="
-            text-slate-500
+            text-slate-400
             mt-2
           "
           >

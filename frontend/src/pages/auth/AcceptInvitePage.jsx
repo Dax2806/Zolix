@@ -54,19 +54,19 @@ const AcceptInvitePage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
-        <p className="text-slate-500">Loading invitation details...</p>
+      <div className="min-h-screen flex items-center justify-center bg-[#030014]">
+        <p className="text-slate-400">Loading invitation details...</p>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
-        <div className="w-full max-w-md bg-white p-8 rounded-2xl border border-red-100 shadow-sm text-center">
-          <h1 className="text-2xl font-bold text-red-600 mb-2">Invitation Error</h1>
-          <p className="text-slate-600 mb-6">{error}</p>
-          <Link to="/login" className="text-black font-medium underline">
+      <div className="min-h-screen flex items-center justify-center bg-[#030014] px-4">
+        <div className="w-full max-w-md bg-[#0A0A0F] p-8 rounded-2xl border border-red-500/20 shadow-[0_0_15px_rgba(0,0,0,0.5)] text-center">
+          <h1 className="text-2xl font-bold text-red-400 mb-2">Invitation Error</h1>
+          <p className="text-slate-400 mb-6">{error}</p>
+          <Link to="/login" className="text-white font-medium underline">
             Go to Login
           </Link>
         </div>
@@ -75,11 +75,11 @@ const AcceptInvitePage = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
-      <div className="w-full max-w-md bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+    <div className="min-h-screen flex items-center justify-center bg-[#030014] px-4">
+      <div className="w-full max-w-md bg-[#0A0A0F] p-8 rounded-2xl border border-white/10 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
         <div className="mb-8 text-center">
           <h1 className="text-2xl font-bold tracking-tight mb-2">Join Workspace</h1>
-          <p className="text-slate-500">
+          <p className="text-slate-400">
             You've been invited as <strong>{email}</strong>
           </p>
         </div>
@@ -94,7 +94,7 @@ const AcceptInvitePage = () => {
               onChange={handleChange}
               placeholder="Enter your name"
               required
-              className="w-full border border-slate-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-black outline-none"
+              className="w-full border border-white/10 rounded-xl px-4 py-3 focus:ring-2 focus:ring-black outline-none"
             />
           </div>
 
@@ -108,7 +108,7 @@ const AcceptInvitePage = () => {
               placeholder="Create a password"
               required
               minLength={6}
-              className="w-full border border-slate-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-black outline-none"
+              className="w-full border border-white/10 rounded-xl px-4 py-3 focus:ring-2 focus:ring-black outline-none"
             />
           </div>
 

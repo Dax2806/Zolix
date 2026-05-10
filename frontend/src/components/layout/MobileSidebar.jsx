@@ -42,7 +42,7 @@ const MobileSidebar = ({
         left-0
         h-screen
         w-72
-        bg-white
+        bg-[#0A0A0F]
         z-50
         p-5
         transform
@@ -81,7 +81,7 @@ const MobileSidebar = ({
             <p
               className="
               text-sm
-              text-slate-500
+              text-slate-400
             "
             >
               Operations OS
@@ -132,7 +132,7 @@ const MobileSidebar = ({
                     ${
                       isActive
                         ? "bg-black text-white"
-                        : "hover:bg-slate-100 text-slate-600"
+                        : "hover:bg-white/10 text-slate-400"
                     }
                   `
                   }

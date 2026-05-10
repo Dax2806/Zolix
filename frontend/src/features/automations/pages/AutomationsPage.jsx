@@ -204,7 +204,7 @@ const AutomationsPage = () => {
         gap-6
       "
       >
-        <section className="bg-white border border-slate-200 rounded-2xl p-6 h-fit">
+        <section className="bg-[#0A0A0F] border border-white/10 rounded-2xl p-6 h-fit">
           <div className="flex items-center gap-2">
             <Workflow size={20} />
             <h2 className="text-lg font-semibold">
@@ -221,7 +221,7 @@ const AutomationsPage = () => {
               value={formData.name}
               onChange={handleChange}
               placeholder="Qualified lead follow-up"
-              className="w-full border border-slate-200 rounded-xl px-4 py-3"
+              className="w-full border border-white/10 rounded-xl px-4 py-3"
               required
             />
 
@@ -232,7 +232,7 @@ const AutomationsPage = () => {
                   formData.fromStatus
                 }
                 onChange={handleChange}
-                className="border border-slate-200 rounded-xl px-4 py-3"
+                className="border border-white/10 rounded-xl px-4 py-3"
               >
                 {statuses.map(
                   (status) => (
@@ -255,7 +255,7 @@ const AutomationsPage = () => {
                   formData.toStatus
                 }
                 onChange={handleChange}
-                className="border border-slate-200 rounded-xl px-4 py-3"
+                className="border border-white/10 rounded-xl px-4 py-3"
                 required
               >
                 {statuses
@@ -275,7 +275,7 @@ const AutomationsPage = () => {
               name="actionType"
               value={formData.actionType}
               onChange={handleChange}
-              className="w-full border border-slate-200 rounded-xl px-4 py-3"
+              className="w-full border border-white/10 rounded-xl px-4 py-3"
             >
               <option value="create_task">Create Task</option>
               <option value="send_email">Send Email</option>
@@ -288,7 +288,7 @@ const AutomationsPage = () => {
                   value={formData.title}
                   onChange={handleChange}
                   placeholder="Task to create"
-                  className="w-full border border-slate-200 rounded-xl px-4 py-3"
+                  className="w-full border border-white/10 rounded-xl px-4 py-3"
                   required
                 />
                 <div className="grid grid-cols-2 gap-3">
@@ -296,7 +296,7 @@ const AutomationsPage = () => {
                     name="priority"
                     value={formData.priority}
                     onChange={handleChange}
-                    className="border border-slate-200 rounded-xl px-4 py-3"
+                    className="border border-white/10 rounded-xl px-4 py-3"
                   >
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>
@@ -308,7 +308,7 @@ const AutomationsPage = () => {
                     name="dueInDays"
                     value={formData.dueInDays}
                     onChange={handleChange}
-                    className="border border-slate-200 rounded-xl px-4 py-3"
+                    className="border border-white/10 rounded-xl px-4 py-3"
                   />
                 </div>
               </>
@@ -319,7 +319,7 @@ const AutomationsPage = () => {
                   value={formData.emailSubject}
                   onChange={handleChange}
                   placeholder="Email Subject"
-                  className="w-full border border-slate-200 rounded-xl px-4 py-3"
+                  className="w-full border border-white/10 rounded-xl px-4 py-3"
                   required
                 />
                 <textarea
@@ -328,7 +328,7 @@ const AutomationsPage = () => {
                   onChange={handleChange}
                   placeholder="Email Body (use {{leadName}} for their name)"
                   rows={4}
-                  className="w-full border border-slate-200 rounded-xl px-4 py-3 resize-none"
+                  className="w-full border border-white/10 rounded-xl px-4 py-3 resize-none"
                   required
                 />
               </>
@@ -344,24 +344,24 @@ const AutomationsPage = () => {
           </form>
         </section>
 
-        <section className="bg-white border border-slate-200 rounded-2xl overflow-hidden">
-          <div className="p-5 border-b border-slate-200">
+        <section className="bg-[#0A0A0F] border border-white/10 rounded-2xl overflow-hidden">
+          <div className="p-5 border-b border-white/10">
             <h2 className="text-lg font-semibold">
               Active Workflow Rules
             </h2>
           </div>
 
           {loading ? (
-            <div className="p-8 text-slate-500">
+            <div className="p-8 text-slate-400">
               Loading automations...
             </div>
           ) : automations.length ===
             0 ? (
-            <div className="p-8 text-center text-slate-500">
+            <div className="p-8 text-center text-slate-400">
               No automations yet.
             </div>
           ) : (
-            <div className="divide-y divide-slate-100">
+            <div className="divide-y divide-white/5">
               {automations.map(
                 (automation) => (
                   <div
@@ -388,7 +388,7 @@ const AutomationsPage = () => {
                           }
                         </h3>
                       </div>
-                      <p className="mt-2 text-sm text-slate-600">
+                      <p className="mt-2 text-sm text-slate-400">
                         When status changes{" "}
                         {automation.conditions?.fromStatus ? `from ${automation.conditions.fromStatus} ` : ""}
                         to {automation.conditions?.toStatus}, 
@@ -405,7 +405,7 @@ const AutomationsPage = () => {
                             automation
                           )
                         }
-                        className="px-3 py-2 rounded-xl border border-slate-200 text-sm"
+                        className="px-3 py-2 rounded-xl border border-white/10 text-sm"
                       >
                         {automation.isActive
                           ? "Pause"
@@ -418,7 +418,7 @@ const AutomationsPage = () => {
                             automation._id
                           )
                         }
-                        className="p-2 rounded-xl text-red-500 hover:bg-red-50"
+                        className="p-2 rounded-xl text-red-500 hover:bg-red-500/10"
                       >
                         <Trash2 size={18} />
                       </button>

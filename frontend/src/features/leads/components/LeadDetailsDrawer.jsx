@@ -133,7 +133,7 @@ const LeadDetailsDrawer = ({
 
         <p
           className="
-          text-slate-500
+          text-slate-400
           mt-2
         "
         >
@@ -174,7 +174,7 @@ const LeadDetailsDrawer = ({
           <p
             className="
             text-sm
-            text-slate-500
+            text-slate-400
             mb-1
           "
           >
@@ -191,7 +191,7 @@ const LeadDetailsDrawer = ({
           <p
             className="
             text-sm
-            text-slate-500
+            text-slate-400
             mb-1
           "
           >
@@ -212,7 +212,7 @@ const LeadDetailsDrawer = ({
           <p
             className="
             text-sm
-            text-slate-500
+            text-slate-400
             mb-1
           "
           >

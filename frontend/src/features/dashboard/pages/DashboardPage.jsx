@@ -4,8 +4,8 @@ import { getDashboardStats } from "../services/dashboard.service";
 
 const StatCard = ({ label, value }) => {
   return (
-    <div className="bg-white border border-slate-200 rounded-2xl p-5">
-      <p className="text-sm text-slate-500">{label}</p>
+    <div className="bg-[#0A0A0F] border border-white/10 rounded-2xl p-5">
+      <p className="text-sm text-slate-400">{label}</p>
       <h2 className="text-2xl font-bold mt-2">{value}</h2>
     </div>
   );

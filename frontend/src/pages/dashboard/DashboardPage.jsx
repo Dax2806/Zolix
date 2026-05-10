@@ -138,9 +138,9 @@ const DashboardPage = () => {
         <div
           className="
           xl:col-span-2
-          bg-white
+          bg-[#0A0A0F]
           border
-          border-slate-200
+          border-white/10
           rounded-2xl
           p-6
         "
@@ -171,7 +171,7 @@ const DashboardPage = () => {
             {activities.length === 0 ? (
               <p
                 className="
-                text-slate-500
+                text-slate-400
               "
               >
                 No recent activity
@@ -186,7 +186,7 @@ const DashboardPage = () => {
                     items-start
                     justify-between
                     border-b
-                    border-slate-100
+                    border-white/5
                     pb-4
                   "
                   >
@@ -204,7 +204,7 @@ const DashboardPage = () => {
                       <p
                         className="
                         text-sm
-                        text-slate-500
+                        text-slate-400
                         mt-1
                       "
                       >
@@ -239,9 +239,9 @@ const DashboardPage = () => {
 
         <div
           className="
-          bg-white
+          bg-[#0A0A0F]
           border
-          border-slate-200
+          border-white/10
           rounded-2xl
           p-6
         "
@@ -265,13 +265,13 @@ const DashboardPage = () => {
               className="
               p-4
               rounded-xl
-              bg-slate-100
+              bg-white/10
             "
             >
               <p
                 className="
                 text-sm
-                text-slate-500
+                text-slate-400
               "
               >
                 Conversion Rate
@@ -292,13 +292,13 @@ const DashboardPage = () => {
               className="
               p-4
               rounded-xl
-              bg-slate-100
+              bg-white/10
             "
             >
               <p
                 className="
                 text-sm
-                text-slate-500
+                text-slate-400
               "
               >
                 Active Tasks
