@@ -5,6 +5,7 @@ import {
   Settings,
   Users,
   Workflow,
+  User,
 } from "lucide-react";
 
 export const navigationItems = [
@@ -22,6 +23,11 @@ export const navigationItems = [
     title: "Tasks",
     path: "/tasks",
     icon: CheckSquare,
+  },
+  {
+    title: "Profile",
+    path: "/profile",
+    icon: User,
   },
   {
     title: "Team",

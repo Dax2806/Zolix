@@ -1,4 +1,5 @@
 import { Menu } from "lucide-react";
+import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import NotificationBell from "./NotificationBell";
 
@@ -35,7 +36,7 @@ const Header = ({ setSidebarOpen }) => {
         <div className="h-8 w-px bg-slate-200/60 hidden sm:block"></div>
 
         {/* User Menu Trigger / Avatar */}
-        <div className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
+        <Link to="/profile" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
           <div className="hidden sm:flex flex-col items-end">
             <span className="text-sm font-bold text-slate-900">{user?.name}</span>
             <span className="text-xs font-medium text-slate-500 capitalize">{user?.role}</span>
@@ -43,7 +44,7 @@ const Header = ({ setSidebarOpen }) => {
           <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-600 to-purple-600 text-white flex items-center justify-center font-bold text-sm shadow-md shadow-indigo-500/20 ring-2 ring-white">
             {user?.name?.charAt(0).toUpperCase()}
           </div>
-        </div>
+        </Link>
       </div>
     </header>
   );

@@ -15,6 +15,7 @@ import TasksPage from "../features/tasks/pages/TasksPage";
 import TeamPage from "../features/team/pages/TeamPage";
 import BillingPage from "../features/billing/pages/BillingPage";
 import AutomationsPage from "../features/automations/pages/AutomationsPage";
+import ProfilePage from "../pages/profile/ProfilePage";
 
 import ProtectedRoute from "./ProtectedRoute";
 import RoleGuard from "../components/RoleGuard";
@@ -53,6 +54,15 @@ const AppRouter = () => {
           element={
             <ProtectedRoute>
               <TasksPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <ProfilePage />
             </ProtectedRoute>
           }
         />
