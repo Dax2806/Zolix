@@ -32,6 +32,29 @@ export const createLeadService = async (
   return lead;
 };
 
+export const bulkCreateLeadsService = async (leadsData, user) => {
+  const preparedLeads = leadsData.map((data) => ({
+    ...data,
+    tenantId: user.tenantId,
+    createdBy: user.id,
+  }));
+
+  const insertedLeads = await Lead.insertMany(preparedLeads);
+
+  if (insertedLeads.length > 0) {
+    await createActivity({
+      tenantId: user.tenantId,
+      entityType: "lead",
+      entityId: insertedLeads[0]._id,
+      action: "imported",
+      description: `Imported ${insertedLeads.length} leads via CSV`,
+      performedBy: user.id,
+    });
+  }
+
+  return insertedLeads;
+};
+
 export const getLeadsService = async (
   query,
   user
