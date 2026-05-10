@@ -1,104 +1,48 @@
 import { Menu } from "lucide-react";
+import useAuth from "../../hooks/useAuth";
+import NotificationBell from "./NotificationBell";
 
-import useAuth
-  from "../../hooks/useAuth";
-
-import NotificationBell
-  from "./NotificationBell";
-
-const Header = ({
-  setSidebarOpen,
-}) => {
+const Header = ({ setSidebarOpen }) => {
   const { user } = useAuth();
 
   return (
-    <header
-      className="
-      sticky
-      top-0
-      z-30
-      h-16
-      bg-white/90
-      backdrop-blur
-      border-b
-      border-slate-200
-      px-4
-      lg:px-8
-      flex
-      items-center
-      justify-between
-    "
-    >
+    <header className="sticky top-0 z-30 h-20 bg-white/60 backdrop-blur-2xl border-b border-slate-200/50 px-4 lg:px-8 flex items-center justify-between shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
       {/* Left */}
-
-      <div
-        className="
-        flex
-        items-center
-        gap-4
-      "
-      >
+      <div className="flex items-center gap-4">
         <button
-          onClick={() =>
-            setSidebarOpen(true)
-          }
-          className="
-          lg:hidden
-        "
+          onClick={() => setSidebarOpen(true)}
+          className="lg:hidden p-2 -ml-2 rounded-xl hover:bg-slate-100 transition-colors"
         >
-          <Menu size={22} />
+          <Menu size={22} className="text-slate-600" />
         </button>
 
         <div>
-          <h2
-            className="
-            text-lg
-            font-semibold
-          "
-          >
-            Welcome back 👋
+          <h2 className="text-xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
+            Welcome back <span className="animate-wave origin-bottom-right inline-block">👋</span>
           </h2>
-
-          <p
-            className="
-            text-sm
-            text-slate-500
-            hidden
-            sm:block
-          "
-          >
-            Manage your operations
+          <p className="text-sm font-medium text-slate-500 hidden sm:block">
+            Manage your operations with precision
           </p>
         </div>
       </div>
 
       {/* Right */}
+      <div className="flex items-center gap-5">
+        <div className="hidden sm:block">
+          <NotificationBell />
+        </div>
 
-      <div
-        className="
-        flex
-        items-center
-        gap-4
-      "
-      >
-        <NotificationBell />
+        <div className="h-8 w-px bg-slate-200/60 hidden sm:block"></div>
 
-        {/* Avatar */}
-
-        <div
-          className="
-          w-10
-          h-10
-          rounded-full
-          bg-black
-          text-white
-          flex
-          items-center
-          justify-center
-          font-semibold
-        "
-        >
-          {user?.name?.charAt(0)}
+        {/* User Menu Trigger / Avatar */}
+        <div className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
+          <div className="hidden sm:flex flex-col items-end">
+            <span className="text-sm font-bold text-slate-900">{user?.name}</span>
+            <span className="text-xs font-medium text-slate-500 capitalize">{user?.role}</span>
+          </div>
+          <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-600 to-purple-600 text-white flex items-center justify-center font-bold text-sm shadow-md shadow-indigo-500/20 ring-2 ring-white">
+            {user?.name?.charAt(0).toUpperCase()}
+          </div>
         </div>
       </div>
     </header>
